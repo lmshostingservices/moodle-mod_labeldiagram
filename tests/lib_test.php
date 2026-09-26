@@ -20,6 +20,10 @@ use mod_labeldiagram\local\manager;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversFunction;
 
+#[CoversFunction('labeldiagram_calculate_percent')]
+#[CoversFunction('labeldiagram_reset_userdata')]
+#[CoversFunction('labeldiagram_delete_instance')]
+#[CoversClass(manager::class)]
 /**
  * Library callbacks (grading methods, reset, delete) and image upload validation.
  *
@@ -32,10 +36,6 @@ use PHPUnit\Framework\Attributes\CoversFunction;
  * @covers     ::labeldiagram_delete_instance
  * @covers     \mod_labeldiagram\local\manager::create_slides_from_draft
  */
-#[CoversFunction('labeldiagram_calculate_percent')]
-#[CoversFunction('labeldiagram_reset_userdata')]
-#[CoversFunction('labeldiagram_delete_instance')]
-#[CoversClass(manager::class)]
 final class lib_test extends \advanced_testcase {
     /**
      * Loads lib.php.

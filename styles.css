@@ -335,7 +335,8 @@
 }
 .path-mod-labeldiagram .ld-shell.is-full {
     border-radius: 0;
-    padding: 20px clamp(12px, 3vw, 40px);
+    --ld-fluid-pad: clamp(12px, 3vw, 40px);
+    padding: 20px var(--ld-fluid-pad);
     overflow: auto;
     --maxh: calc(100vh - 290px);
 }
@@ -519,9 +520,11 @@
     isolation: isolate;
     display: grid;
     grid-template-columns: var(--rail) minmax(0, 1fr);
-    column-gap: clamp(28px, 6vw, 80px);
+    --ld-fluid-gap: clamp(28px, 6vw, 80px);
+    column-gap: var(--ld-fluid-gap);
     align-items: center;
-    padding: clamp(10px, 2vw, 20px);
+    --ld-fluid-pad: clamp(10px, 2vw, 20px);
+    padding: var(--ld-fluid-pad);
     border-radius: 20px;
     background: var(--ld-surface);
     border: 1px solid var(--ld-border);
@@ -1097,13 +1100,15 @@
 }
 .path-mod-labeldiagram .ld-summary-shell {
     align-items: center;
-    padding: clamp(18px, 4vw, 40px);
+    --ld-fluid-pad: clamp(18px, 4vw, 40px);
+    padding: var(--ld-fluid-pad);
 }
 .path-mod-labeldiagram .ld-summary {
     width: 100%;
     max-width: 560px;
     text-align: center;
-    padding: 32px clamp(16px, 4vw, 36px);
+    --ld-fluid-pad: clamp(16px, 4vw, 36px);
+    padding: 32px var(--ld-fluid-pad);
     border-radius: 24px;
     background: var(--ld-surface);
     border: 1px solid var(--ld-border);
@@ -2089,7 +2094,8 @@
 }
 .path-mod-labeldiagram .ld-intro-shell {
     align-items: center;
-    padding: clamp(14px, 3vw, 36px);
+    --ld-fluid-pad: clamp(14px, 3vw, 36px);
+    padding: var(--ld-fluid-pad);
 }
 .path-mod-labeldiagram .ld-intro {
     width: 100%;
@@ -2144,7 +2150,8 @@
 }
 .path-mod-labeldiagram .ld-intro-title {
     margin: 10px 0 4px;
-    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    --ld-fluid-size: clamp(1.35rem, 3vw, 1.75rem);
+    font-size: var(--ld-fluid-size);
     font-weight: 800;
 }
 .path-mod-labeldiagram .ld-intro-sub {
@@ -2574,7 +2581,8 @@
     padding: 12px;
 }
 .path-mod-labeldiagram .ld-shell.is-full {
-    padding: 12px clamp(10px, 2vw, 24px);
+    --ld-fluid-pad: clamp(10px, 2vw, 24px);
+    padding: 12px var(--ld-fluid-pad);
 }
 .path-mod-labeldiagram .ld-titlewrap {
     flex: 0 1 auto;
@@ -2613,7 +2621,8 @@
 }
 .path-mod-labeldiagram .ld-board {
     padding: 10px;
-    column-gap: clamp(20px, 3.5vw, 56px);
+    --ld-fluid-gap: clamp(20px, 3.5vw, 56px);
+    column-gap: var(--ld-fluid-gap);
 }
 .path-mod-labeldiagram .ld-tray {
     margin-top: 8px;
@@ -2622,7 +2631,8 @@
 }
 .path-mod-labeldiagram .ld-shell.ld-wide .ld-slide.has-tray {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) clamp(170px, 16%, 230px);
+    --ld-fluid-col: clamp(170px, 16%, 230px);
+    grid-template-columns: minmax(0, 1fr) var(--ld-fluid-col);
     gap: 10px;
     align-items: stretch;
 }

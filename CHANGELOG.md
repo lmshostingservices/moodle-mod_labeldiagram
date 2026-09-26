@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.4 (2026-09-27)
+
+- Stylesheet: responsive sizes now pass the CSS validator used by Moodle's official build tools on every supported version. Layout and appearance are unchanged.
+- Automated tests: coverage information is now detected on Moodle 4.4 and 4.5 as well as 5.0 and later. No change to how the plugin works.
+
 ## 2.0.3 (2026-09-26)
 
 - Reworded two code comments so the LMS Labs release scanner accepts them. No change to how the plugin works.

@@ -19,6 +19,8 @@ namespace mod_labeldiagram;
 use mod_labeldiagram\local\manager;
 use PHPUnit\Framework\Attributes\CoversClass;
 
+#[CoversClass(\backup_labeldiagram_activity_structure_step::class)]
+#[CoversClass(\restore_labeldiagram_activity_structure_step::class)]
 /**
  * Backup and restore: content, images, user data and id remapping.
  *
@@ -29,8 +31,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @covers     \backup_labeldiagram_activity_structure_step
  * @covers     \restore_labeldiagram_activity_structure_step
  */
-#[CoversClass(\backup_labeldiagram_activity_structure_step::class)]
-#[CoversClass(\restore_labeldiagram_activity_structure_step::class)]
 final class backup_restore_test extends \advanced_testcase {
     /**
      * Loads the backup and restore libraries.

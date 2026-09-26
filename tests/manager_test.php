@@ -19,6 +19,7 @@ namespace mod_labeldiagram;
 use mod_labeldiagram\local\manager;
 use PHPUnit\Framework\Attributes\CoversClass;
 
+#[CoversClass(manager::class)]
 /**
  * Tests for the attempt workflow, grading and label limits.
  *
@@ -28,7 +29,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @covers     \mod_labeldiagram\local\manager
  */
-#[CoversClass(manager::class)]
 final class manager_test extends \advanced_testcase {
     /**
      * Creates a small PNG for slides.

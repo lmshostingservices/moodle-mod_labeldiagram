@@ -19,6 +19,10 @@ namespace mod_labeldiagram\external;
 use core_external\external_api;
 use PHPUnit\Framework\Attributes\CoversClass;
 
+#[CoversClass(start_attempt::class)]
+#[CoversClass(submit_slide::class)]
+#[CoversClass(finish_attempt::class)]
+#[CoversClass(save_slide::class)]
 /**
  * Web services: permissions, attempt ownership and Test mode answer hiding.
  *
@@ -31,10 +35,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @covers     \mod_labeldiagram\external\finish_attempt
  * @covers     \mod_labeldiagram\external\save_slide
  */
-#[CoversClass(start_attempt::class)]
-#[CoversClass(submit_slide::class)]
-#[CoversClass(finish_attempt::class)]
-#[CoversClass(save_slide::class)]
 final class services_test extends \advanced_testcase {
     /** @var \stdClass Course. */
     protected $course;

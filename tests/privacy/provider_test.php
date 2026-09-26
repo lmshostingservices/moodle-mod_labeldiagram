@@ -24,6 +24,7 @@ use core_privacy\tests\provider_testcase;
 use mod_labeldiagram\local\manager;
 use PHPUnit\Framework\Attributes\CoversClass;
 
+#[CoversClass(provider::class)]
 /**
  * Tests for the privacy provider: metadata, export and every deletion mode.
  *
@@ -33,7 +34,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @covers     \mod_labeldiagram\privacy\provider
  */
-#[CoversClass(provider::class)]
 final class provider_test extends provider_testcase {
     /** @var \stdClass Course. */
     protected $course;
