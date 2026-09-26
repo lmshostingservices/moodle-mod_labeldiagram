@@ -1,0 +1,100 @@
+{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
+}}
+{{!
+    @template mod_labeldiagram/slides
+
+    Slide manager.
+
+    Example context (json):
+    {
+        "cards": [{"number": 1, "title": "Engine", "image": "", "pins": 4, "distractors": 0, "editurl": "#",
+            "replaceurl": "#", "deleteurl": "#"}],
+        "hascards": true, "count": 1, "maxpins": 10, "viewurl": "#",
+        "addform": "<form></form>", "imageprompt": "Prompt"
+    }
+}}
+<div class="ld-slides">
+    <div class="ld-ed-toolbar">
+        <h2 class="h3 mb-0 ld-grow">{{#str}} manageslides, mod_labeldiagram {{/str}} <span class="ld-counter-pill">{{count}}</span></h2>
+        <a class="ld-btn ld-btn-ghost" href="{{viewurl}}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+            {{#str}} previewstudent, mod_labeldiagram {{/str}}
+        </a>
+    </div>
+
+    {{#hascards}}
+    <div class="ld-slides-grid">
+        {{#cards}}
+        <div class="ld-slidecard">
+            <a class="ld-slidecard-thumb" href="{{editurl}}">
+                {{#image}}<img src="{{image}}" alt="" loading="lazy">{{/image}}
+                <span class="ld-slidecard-no">{{#str}} slidex, mod_labeldiagram, {{number}} {{/str}}</span>
+            </a>
+            <div class="ld-slidecard-body">
+                <h3 class="ld-slidecard-title">{{{title}}}</h3>
+                <div class="ld-slidecard-meta {{#nopins}}is-warn{{/nopins}}">
+                    {{#nopins}}{{#str}} nolabelsyet, mod_labeldiagram {{/str}}{{/nopins}}
+                    {{^nopins}}{{#str}} pinsummary, mod_labeldiagram, { "pins": {{pins}}, "max": {{maxpins}}, "distractors": {{distractors}} } {{/str}}{{/nopins}}
+                </div>
+                <div class="ld-slidecard-actions">
+                    <a class="ld-btn ld-btn-primary ld-btn-sm" href="{{editurl}}">{{#str}} editlabels, mod_labeldiagram {{/str}}</a>
+                    {{#upurl}}<a class="ld-iconbtn" href="{{upurl}}" title="{{#str}} moveleft, mod_labeldiagram {{/str}}" aria-label="{{#str}} moveleft, mod_labeldiagram {{/str}}"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></a>{{/upurl}}
+                    {{#downurl}}<a class="ld-iconbtn" href="{{downurl}}" title="{{#str}} moveright, mod_labeldiagram {{/str}}" aria-label="{{#str}} moveright, mod_labeldiagram {{/str}}"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>{{/downurl}}
+                    <a class="ld-iconbtn" href="{{replaceurl}}" title="{{#str}} replaceimage, mod_labeldiagram {{/str}}" aria-label="{{#str}} replaceimage, mod_labeldiagram {{/str}}"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M8 15l3-3 2 2 3-3"/></svg></a>
+                    <a class="ld-iconbtn" href="{{deleteurl}}" title="{{#str}} delete {{/str}}" aria-label="{{#str}} delete {{/str}}"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></a>
+                </div>
+            </div>
+        </div>
+        {{/cards}}
+    </div>
+    {{/hascards}}
+
+    <div class="ld-panel">
+        <h4><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg>{{#str}} addslides, mod_labeldiagram {{/str}}</h4>
+        <p class="ld-mini">{{#str}} addslides_help, mod_labeldiagram {{/str}}</p>
+        <div class="ld-tips">
+            <div class="ld-tips-head">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 9h18M8 5v4"/></svg>
+                <strong>{{#str}} imagetips_title, mod_labeldiagram {{/str}}</strong>
+            </div>
+            <ul>
+                <li>{{#str}} imagetip_size, mod_labeldiagram {{/str}}</li>
+                <li>{{#str}} imagetip_format, mod_labeldiagram {{/str}}</li>
+                <li>{{#str}} imagetip_shape, mod_labeldiagram {{/str}}</li>
+                <li>{{#str}} imagetip_background, mod_labeldiagram {{/str}}</li>
+                <li>{{#str}} imagetip_crop, mod_labeldiagram {{/str}}</li>
+                <li>{{#str}} imagetip_clean, mod_labeldiagram {{/str}}</li>
+                <li>{{#str}} imagetip_spacing, mod_labeldiagram {{/str}}</li>
+                <li>{{#str}} imagetip_replace, mod_labeldiagram {{/str}}</li>
+            </ul>
+            <div class="ld-prompt">
+                <div class="ld-prompt-head">
+                    <div>
+                        <strong>{{#str}} imageprompt_title, mod_labeldiagram {{/str}}</strong>
+                        <div class="ld-mini">{{#str}} imageprompt_help, mod_labeldiagram {{/str}}</div>
+                    </div>
+                    <button type="button" class="ld-btn ld-btn-primary ld-btn-sm ld-copy" data-target="#ld-imageprompt" data-done="{{#str}} copied, mod_labeldiagram {{/str}}">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 00-2-2H6a2 2 0 00-2 2v8a2 2 0 002 2h2"/></svg>
+                        <span>{{#str}} copyimageprompt, mod_labeldiagram {{/str}}</span>
+                    </button>
+                </div>
+                <textarea id="ld-imageprompt" class="ld-textarea ld-prompt-text" readonly rows="10" aria-label="{{#str}} imageprompt_title, mod_labeldiagram {{/str}}">{{imageprompt}}</textarea>
+            </div>
+        </div>
+        {{{addform}}}
+    </div>
+</div>

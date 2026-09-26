@@ -1,0 +1,135 @@
+{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
+}}
+{{!
+    @template mod_labeldiagram/view
+
+    Activity landing page with mode chooser. The player is mounted into .ld-player by JavaScript.
+
+    Example context (json):
+    {
+        "uniqid": "ld-1",
+        "config": "{}",
+        "slidecount": 3,
+        "donecount": 1,
+        "modecount": 3,
+        "pincount": 12,
+        "ready": true,
+        "canmanage": true,
+        "manageurl": "#",
+        "reporturl": "#",
+        "guest": false,
+        "modes": [
+            {"key": "practice", "icon": "practice", "enabled": true, "title": "Practice", "desc": "Instant feedback", "bestfor": "Best for practising",
+             "rows": [{"label": "Feedback", "text": "Instant", "yes": true}],
+             "done": true, "status": "Practised"}
+        ]
+    }
+}}
+<div id="{{uniqid}}" class="ld-app" data-config="{{config}}">
+    <div class="ld-home" data-region="home">
+        <div class="ld-hero">
+            <div class="ld-hero-stats">
+                <span class="ld-stat">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="11" r="2"/><path d="M21 16l-5-5-8 8"/></svg>
+                    {{#str}} slidecount, mod_labeldiagram, {{slidecount}} {{/str}}
+                </span>
+                <span class="ld-stat">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5"/></svg>
+                    {{#str}} pincount, mod_labeldiagram, {{pincount}} {{/str}}
+                </span>
+                {{#donecount}}
+                <span class="ld-stat ld-stat-done">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+                    {{#str}} modesdone, mod_labeldiagram, { "done": {{donecount}}, "total": {{modecount}} } {{/str}}
+                </span>
+                {{/donecount}}
+            </div>
+            <div class="ld-hero-actions">
+                {{#canmanage}}
+                <a class="ld-btn ld-btn-ghost" href="{{manageurl}}">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4l10-10-4-4L4 16v4z"/><path d="M13.5 6.5l4 4"/></svg>
+                    {{#str}} manageslides, mod_labeldiagram {{/str}}
+                </a>
+                {{/canmanage}}
+                {{#reporturl}}
+                <a class="ld-btn ld-btn-ghost" href="{{reporturl}}">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>
+                    {{#str}} reports, mod_labeldiagram {{/str}}
+                </a>
+                {{/reporturl}}
+            </div>
+        </div>
+
+        {{^ready}}
+        <div class="ld-empty">
+            <div class="ld-empty-art" aria-hidden="true">
+                <svg viewBox="0 0 120 90"><rect x="8" y="10" width="104" height="70" rx="12"/><circle cx="44" cy="40" r="7"/><circle cx="78" cy="56" r="7"/><path d="M8 66l30-22 22 16 18-12 34 24"/></svg>
+            </div>
+            <h3>{{#str}} notready, mod_labeldiagram {{/str}}</h3>
+            <p>{{#canmanage}}{{#str}} notready_manager, mod_labeldiagram {{/str}}{{/canmanage}}{{^canmanage}}{{#str}} notready_student, mod_labeldiagram {{/str}}{{/canmanage}}</p>
+            {{#canmanage}}<a class="ld-btn ld-btn-primary" href="{{manageurl}}">{{#str}} addslides, mod_labeldiagram {{/str}}</a>{{/canmanage}}
+        </div>
+        {{/ready}}
+
+        {{#ready}}
+        <div class="ld-modes">
+            {{#modes}}
+            <div class="ld-mode ld-mode-{{key}} {{#done}}is-done{{/done}}">
+                {{#done}}
+                <div class="ld-mode-done" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+                </div>
+                <span class="ld-badge ld-badge-done">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>{{status}}
+                </span>
+                {{/done}}
+                <div class="ld-mode-icon" aria-hidden="true">
+                    {{#icon}}
+                    <svg viewBox="0 0 24 24" class="ld-i-study"><path d="M3 6.5C5.5 5 8.5 5 12 7c3.5-2 6.5-2 9-.5V19c-2.5-1.5-5.5-1.5-9 .5-3.5-2-6.5-2-9-.5z"/><path d="M12 7v12.5"/></svg>
+                    <svg viewBox="0 0 24 24" class="ld-i-practice"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg>
+                    <svg viewBox="0 0 24 24" class="ld-i-test"><path d="M9 4h6l1 2h3v15H5V6h3z"/><path d="M9 13l2 2 4-4"/></svg>
+                    {{/icon}}
+                </div>
+                <h3 class="ld-mode-title">{{title}}</h3>
+                <p class="ld-mode-bestfor">{{bestfor}}</p>
+                <ul class="ld-cmp">
+                    {{#rows}}
+                    <li class="{{#yes}}is-yes{{/yes}}{{^yes}}is-no{{/yes}}">
+                        <span class="ld-cmp-ic" aria-hidden="true">{{#yes}}<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>{{/yes}}{{^yes}}<svg viewBox="0 0 24 24"><path d="M6 12h12"/></svg>{{/yes}}</span>
+                        <span class="ld-cmp-label">{{label}}</span>
+                        <span class="ld-cmp-text">{{text}}</span>
+                    </li>
+                    {{/rows}}
+                </ul>
+                {{#extra}}<p class="ld-mode-meta ld-mode-extra">{{extra}}</p>{{/extra}}
+                {{#meta}}<p class="ld-mode-meta">{{meta}}</p>{{/meta}}
+                {{^done}}{{#graded}}<span class="ld-badge">{{#str}} graded, mod_labeldiagram {{/str}}</span>{{/graded}}{{/done}}
+                {{#warn}}<p class="ld-mode-meta ld-warn">{{warn}}</p>{{/warn}}
+                {{#nomore}}<p class="ld-mode-meta ld-warn">{{#str}} nomoreattempts, mod_labeldiagram {{/str}}</p>{{/nomore}}
+                <button type="button" class="ld-btn ld-btn-primary ld-mode-start" data-action="start" data-mode="{{key}}" {{^enabled}}disabled{{/enabled}}>
+                    {{#done}}{{#str}} startagain, mod_labeldiagram {{/str}}{{/done}}{{^done}}{{#str}} start, mod_labeldiagram {{/str}}{{/done}}
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </button>
+            </div>
+            {{/modes}}
+        </div>
+        {{#guest}}<p class="ld-note">{{#str}} guestnote, mod_labeldiagram {{/str}}</p>{{/guest}}
+        {{/ready}}
+    </div>
+    <div class="ld-player" data-region="player" hidden></div>
+    <div class="ld-live visually-hidden sr-only" aria-live="polite" data-region="live"></div>
+</div>

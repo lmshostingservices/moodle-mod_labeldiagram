@@ -1,0 +1,2963 @@
+/**
+ * Styles for mod_labeldiagram.
+ *
+ * @package    mod_labeldiagram
+ * @copyright  2026 LMS Hosting Services
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+.path-mod-labeldiagram .ld-app,
+.path-mod-labeldiagram .ld-editor,
+.path-mod-labeldiagram .ld-report,
+.path-mod-labeldiagram .ld-slides,
+.path-mod-labeldiagram .ld-ghost {
+    --ld-bg: #f3f5f9;
+    --ld-surface: #fff;
+    --ld-surface-2: #f8fafc;
+    --ld-border: #e4e8ef;
+    --ld-border-strong: #cbd5e1;
+    --ld-text: #0f172a;
+    --ld-text-2: #334155;
+    --ld-muted: #526071;
+    --ld-primary: #4f46e5;
+    --ld-primary-2: #6366f1;
+    --ld-primary-soft: #eef2ff;
+    --ld-success: #12b76a;
+    --ld-success-soft: #ecfdf3;
+    --ld-danger: #f04438;
+    --ld-danger-soft: #fef3f2;
+    --ld-warning: #f79009;
+    --ld-warning-soft: #fffaeb;
+    --ld-teal: #0e9f9a;
+    --ld-teal-text: #0b7470;
+    --ld-warning-text: #b54708;
+    --ld-danger-text: #b42318;
+    --ld-success-text: #067647;
+    --ld-primary-text: var(--ld-primary);
+    --ld-radius: 16px;
+    --ld-shadow-sm: 0 1px 2px rgba(16, 24, 40, .05), 0 1px 3px rgba(16, 24, 40, .07);
+    --ld-shadow-md: 0 6px 14px -4px rgba(16, 24, 40, .10), 0 2px 6px -2px rgba(16, 24, 40, .06);
+    --ld-shadow-lg: 0 24px 40px -12px rgba(16, 24, 40, .22), 0 8px 12px -6px rgba(16, 24, 40, .08);
+    --ld-spring: cubic-bezier(.34, 1.56, .64, 1);
+    --ld-ease: cubic-bezier(.22, 1, .36, 1);
+    color: var(--ld-text);
+    font-feature-settings: "tnum" 0;
+}
+.path-mod-labeldiagram .ld-app svg,
+.path-mod-labeldiagram .ld-editor svg,
+.path-mod-labeldiagram .ld-slides svg,
+.path-mod-labeldiagram .ld-report svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.path-mod-labeldiagram .ld-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    font-weight: 600;
+    font-size: .95rem;
+    line-height: 1;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform .18s var(--ld-ease), box-shadow .18s var(--ld-ease), background-color .18s, opacity .18s;
+}
+.path-mod-labeldiagram .ld-btn svg {
+    width: 18px;
+    height: 18px;
+}
+.path-mod-labeldiagram .ld-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+.path-mod-labeldiagram .ld-btn:active:not(:disabled) {
+    transform: translateY(0) scale(.98);
+}
+.path-mod-labeldiagram .ld-btn:focus-visible,
+.path-mod-labeldiagram .ld-iconbtn:focus-visible,
+.path-mod-labeldiagram .ld-chip:focus-visible,
+.path-mod-labeldiagram .ld-slot-zone:focus-visible,
+.path-mod-labeldiagram .ld-pin:focus-visible {
+    outline: 3px solid var(--ld-primary-2);
+    outline-offset: 3px;
+}
+.path-mod-labeldiagram .ld-btn:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+.path-mod-labeldiagram .ld-btn-primary {
+    color: #fff;
+    background: linear-gradient(180deg, var(--ld-primary-2), var(--ld-primary));
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .25) inset, 0 6px 16px -6px rgba(79, 70, 229, .65);
+}
+.path-mod-labeldiagram .ld-btn-primary:hover:not(:disabled) {
+    color: #fff;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .25) inset, 0 10px 22px -6px rgba(79, 70, 229, .7);
+}
+.path-mod-labeldiagram .ld-btn-ghost {
+    color: var(--ld-text-2);
+    background: var(--ld-surface);
+    border-color: var(--ld-border);
+    box-shadow: var(--ld-shadow-sm);
+}
+.path-mod-labeldiagram .ld-btn-ghost:hover:not(:disabled) {
+    color: var(--ld-text);
+    box-shadow: var(--ld-shadow-md);
+}
+.path-mod-labeldiagram .ld-btn-danger {
+    color: var(--ld-danger-text);
+    background: var(--ld-surface);
+    border-color: #fecdca;
+}
+.path-mod-labeldiagram .ld-btn-sm {
+    min-height: 36px;
+    padding: 0 12px;
+    font-size: .875rem;
+    border-radius: 10px;
+}
+.path-mod-labeldiagram .ld-iconbtn {
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--ld-border);
+    background: var(--ld-surface);
+    color: var(--ld-text-2);
+    box-shadow: var(--ld-shadow-sm);
+    cursor: pointer;
+    padding: 0;
+    transition: transform .18s var(--ld-ease), box-shadow .18s, color .18s;
+}
+.path-mod-labeldiagram .ld-iconbtn:hover {
+    color: var(--ld-primary);
+    transform: translateY(-1px);
+    box-shadow: var(--ld-shadow-md);
+}
+.path-mod-labeldiagram .ld-iconbtn svg {
+    width: 20px;
+    height: 20px;
+}
+.path-mod-labeldiagram .ld-pulse {
+    animation: ld-glow 1.8s ease-in-out infinite;
+}
+.path-mod-labeldiagram .ld-home {
+    transition: opacity .25s, transform .25s;
+}
+.path-mod-labeldiagram .ld-home.ld-leaving {
+    opacity: .5;
+    transform: scale(.99);
+    pointer-events: none;
+}
+.path-mod-labeldiagram .ld-hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+.path-mod-labeldiagram .ld-hero-stats,
+.path-mod-labeldiagram .ld-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.path-mod-labeldiagram .ld-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: var(--ld-surface);
+    border: 1px solid var(--ld-border);
+    box-shadow: var(--ld-shadow-sm);
+    font-weight: 600;
+    font-size: .9rem;
+    color: var(--ld-text-2);
+}
+.path-mod-labeldiagram .ld-stat svg {
+    width: 18px;
+    height: 18px;
+    color: var(--ld-primary);
+}
+.path-mod-labeldiagram .ld-modes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+}
+.path-mod-labeldiagram .ld-mode {
+    --accent: var(--ld-primary);
+    --accent-soft: var(--ld-primary-soft);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px;
+    border-radius: 20px;
+    background: var(--ld-surface);
+    border: 1px solid var(--ld-border);
+    box-shadow: var(--ld-shadow-sm);
+    overflow: hidden;
+    transition: transform .25s var(--ld-ease), box-shadow .25s var(--ld-ease);
+}
+.path-mod-labeldiagram .ld-mode::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--accent);
+    opacity: .9;
+}
+.path-mod-labeldiagram .ld-mode:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--ld-shadow-lg);
+}
+.path-mod-labeldiagram .ld-mode-study {
+    --accent: var(--ld-teal);
+    --accent-text: var(--ld-teal-text);
+    --accent-soft: #e6f7f6;
+}
+.path-mod-labeldiagram .ld-mode-test {
+    --accent: var(--ld-warning);
+    --accent-text: var(--ld-warning-text);
+    --accent-soft: var(--ld-warning-soft);
+}
+.path-mod-labeldiagram .ld-mode-icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    margin-bottom: 6px;
+}
+.path-mod-labeldiagram .ld-mode-icon svg {
+    display: none;
+    width: 26px;
+    height: 26px;
+}
+.path-mod-labeldiagram .ld-mode-study .ld-i-study,
+.path-mod-labeldiagram .ld-mode-practice .ld-i-practice,
+.path-mod-labeldiagram .ld-mode-test .ld-i-test {
+    display: block;
+}
+.path-mod-labeldiagram .ld-mode-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.path-mod-labeldiagram .ld-mode-desc {
+    margin: 0;
+    color: var(--ld-muted);
+    line-height: 1.5;
+    flex: 1;
+}
+.path-mod-labeldiagram .ld-mode-meta {
+    margin: 0;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--ld-text-2);
+}
+.path-mod-labeldiagram .ld-warn {
+    color: var(--ld-danger);
+}
+.path-mod-labeldiagram .ld-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    color: var(--accent);
+    background: var(--accent-soft);
+}
+.path-mod-labeldiagram .ld-mode-start {
+    margin-top: 10px;
+    width: 100%;
+}
+.path-mod-labeldiagram .ld-mode-study .ld-mode-start {
+    background: linear-gradient(180deg, #14b8a6, var(--ld-teal));
+    box-shadow: 0 6px 16px -6px rgba(14, 159, 154, .6);
+}
+.path-mod-labeldiagram .ld-mode-test .ld-mode-start {
+    background: linear-gradient(180deg, #fdb022, var(--ld-warning));
+    box-shadow: 0 6px 16px -6px rgba(247, 144, 9, .6);
+}
+.path-mod-labeldiagram .ld-note {
+    margin-top: 14px;
+    color: var(--ld-muted);
+    font-size: .9rem;
+}
+.path-mod-labeldiagram .ld-empty {
+    text-align: center;
+    padding: 48px 24px;
+    border-radius: 20px;
+    background: var(--ld-surface);
+    border: 1px dashed var(--ld-border-strong);
+}
+.path-mod-labeldiagram .ld-empty-art svg {
+    width: 120px;
+    height: 90px;
+    color: var(--ld-primary-2);
+    stroke-width: 2.5;
+}
+.path-mod-labeldiagram .ld-empty h3 {
+    margin: 12px 0 6px;
+    font-weight: 700;
+}
+.path-mod-labeldiagram .ld-empty p {
+    color: var(--ld-muted);
+}
+.path-mod-labeldiagram .ld-shell {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 24px;
+    background: var(--ld-bg);
+    border: 1px solid var(--ld-border);
+    box-shadow: var(--ld-shadow-md);
+    outline: none;
+    --maxh: 62vh;
+    animation: ld-rise .5s var(--ld-ease);
+}
+.path-mod-labeldiagram .ld-shell.is-full {
+    border-radius: 0;
+    padding: 20px clamp(12px, 3vw, 40px);
+    overflow: auto;
+    --maxh: calc(100vh - 290px);
+}
+.path-mod-labeldiagram .ld-shell:fullscreen {
+    background: var(--ld-bg);
+}
+.path-mod-labeldiagram .ld-shell.is-pseudo-full {
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    height: 100%;
+}
+.path-mod-labeldiagram .ld-topbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.path-mod-labeldiagram .ld-titlewrap {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.path-mod-labeldiagram .ld-modetag {
+    flex: none;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ld-primary);
+    background: var(--ld-primary-soft);
+}
+.path-mod-labeldiagram .ld-modetag-study {
+    color: var(--ld-teal-text);
+    background: #e6f7f6;
+}
+.path-mod-labeldiagram .ld-modetag-test {
+    color: #b54708;
+    background: var(--ld-warning-soft);
+}
+.path-mod-labeldiagram .ld-slidetitle {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+.path-mod-labeldiagram .ld-slidename {
+    font-weight: 700;
+    font-size: 1.05rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.path-mod-labeldiagram .ld-counter {
+    font-size: .8rem;
+    color: var(--ld-muted);
+    font-weight: 600;
+}
+.path-mod-labeldiagram .ld-tools {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.path-mod-labeldiagram .ld-timer,
+.path-mod-labeldiagram .ld-score {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 12px;
+    background: var(--ld-surface);
+    border: 1px solid var(--ld-border);
+    box-shadow: var(--ld-shadow-sm);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--ld-text-2);
+}
+.path-mod-labeldiagram .ld-timer svg,
+.path-mod-labeldiagram .ld-score svg {
+    width: 18px;
+    height: 18px;
+    color: var(--ld-primary-2);
+}
+.path-mod-labeldiagram .ld-score strong {
+    display: inline-block;
+    color: var(--ld-text);
+}
+.path-mod-labeldiagram .ld-score-label {
+    font-weight: 600;
+    color: var(--ld-muted);
+    font-size: .85rem;
+}
+.path-mod-labeldiagram .ld-score-total {
+    color: var(--ld-muted);
+    font-weight: 600;
+}
+.path-mod-labeldiagram .ld-timer.is-warning {
+    color: #b54708;
+    border-color: #fedf89;
+    background: var(--ld-warning-soft);
+}
+.path-mod-labeldiagram .ld-timer.is-danger {
+    color: var(--ld-danger);
+    border-color: #fecdca;
+    background: var(--ld-danger-soft);
+    animation: ld-throb 1s ease-in-out infinite;
+}
+.path-mod-labeldiagram .ld-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+.path-mod-labeldiagram .ld-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: var(--ld-border-strong);
+    cursor: pointer;
+    transition: width .35s var(--ld-ease), background-color .3s;
+}
+.path-mod-labeldiagram .ld-dot.is-done {
+    background: var(--ld-success);
+}
+.path-mod-labeldiagram .ld-dot.is-active {
+    width: 28px;
+    background: var(--ld-primary);
+}
+.path-mod-labeldiagram .ld-viewport {
+    overflow: hidden;
+    border-radius: 20px;
+    transition: height .45s cubic-bezier(.22, 1, .36, 1);
+}
+.path-mod-labeldiagram .ld-track {
+    display: flex;
+    align-items: flex-start;
+    will-change: transform;
+}
+.path-mod-labeldiagram .ld-slide {
+    position: relative;
+    flex: 0 0 100%;
+    min-width: 0;
+    padding: 2px 4px 6px;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: scale(.97);
+    transition: opacity .45s var(--ld-ease), transform .6s var(--ld-ease);
+}
+.path-mod-labeldiagram .ld-slide.is-active {
+    opacity: 1;
+    transform: none;
+}
+.path-mod-labeldiagram .ld-slide-head {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.path-mod-labeldiagram .ld-instructions {
+    display: inline-block;
+    margin: 0;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--ld-surface);
+    border: 1px solid var(--ld-border);
+    color: var(--ld-muted);
+    font-size: .88rem;
+    font-weight: 500;
+}
+.path-mod-labeldiagram .ld-board {
+    --rail: clamp(120px, 24%, 230px);
+    --slot-h: 44px;
+    --chip-fs: .9rem;
+    --pin: 28px;
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: var(--rail) minmax(0, 1fr);
+    column-gap: clamp(28px, 6vw, 80px);
+    align-items: center;
+    padding: clamp(10px, 2vw, 20px);
+    border-radius: 20px;
+    background: var(--ld-surface);
+    border: 1px solid var(--ld-border);
+    box-shadow: var(--ld-shadow-sm);
+}
+.path-mod-labeldiagram .ld-board.ld-compact {
+    --slot-h: 36px;
+    --chip-fs: .8rem;
+    --pin: 24px;
+}
+.path-mod-labeldiagram .ld-board.ld-n9,
+.path-mod-labeldiagram .ld-board.ld-n10 {
+    --slot-h: 32px;
+    --chip-fs: .76rem;
+}
+.path-mod-labeldiagram .ld-rail {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 6px;
+    align-self: stretch;
+    padding: 4px 0;
+}
+.path-mod-labeldiagram .ld-slot-zone {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: var(--slot-h);
+    padding: 3px 5px 3px 4px;
+    border-radius: 12px;
+    border: 2px dashed var(--ld-border-strong);
+    background: var(--ld-surface-2);
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: border-color .2s, background-color .2s, transform .25s var(--ld-spring), box-shadow .2s;
+}
+.path-mod-labeldiagram .ld-slot-num {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--ld-text);
+    font-size: .72rem;
+    font-weight: 800;
+    box-shadow: 0 0 0 1.5px var(--ld-border-strong);
+}
+.path-mod-labeldiagram .ld-slot-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.path-mod-labeldiagram .ld-slot-zone.is-filled {
+    border-style: solid;
+    border-color: transparent;
+    background: transparent;
+}
+.path-mod-labeldiagram .ld-board.is-dragging .ld-slot-zone:not(.is-filled):not(.is-correct):not(.is-over),
+.path-mod-labeldiagram .ld-board.is-targeting .ld-slot-zone:not(.is-correct):not(.is-revealed):not(.is-over) {
+    border-color: #a5b4fc;
+    background: #f5f7ff;
+    animation: ld-breathe 1.4s ease-in-out infinite;
+}
+.path-mod-labeldiagram .ld-board .ld-slot-zone.is-over {
+    border-color: var(--ld-primary);
+    border-style: solid;
+    background: var(--ld-primary-soft);
+    transform: scale(1.04);
+    box-shadow: 0 0 0 5px rgba(99, 102, 241, .18), 0 10px 24px -10px rgba(79, 70, 229, .55);
+    animation: none;
+}
+.path-mod-labeldiagram .ld-slot-zone.is-correct {
+    border: 2px solid var(--ld-success);
+    background: var(--ld-success-soft);
+}
+.path-mod-labeldiagram .ld-slot-zone.is-revealed {
+    border: 2px dashed var(--ld-success);
+    background: var(--ld-success-soft);
+}
+.path-mod-labeldiagram .ld-slot-zone.is-incorrect {
+    border: 2px solid var(--ld-danger);
+    background: var(--ld-danger-soft);
+}
+.path-mod-labeldiagram .ld-slot-zone.is-wrong {
+    border-color: var(--ld-danger);
+    background: var(--ld-danger-soft);
+    animation: ld-shake .45s ease;
+}
+.path-mod-labeldiagram .ld-slot-zone.ld-hinted {
+    border-color: var(--ld-warning);
+    background: var(--ld-warning-soft);
+    animation: ld-hint 0.6s ease-in-out 3;
+}
+.path-mod-labeldiagram .ld-check {
+    position: absolute;
+    top: -9px;
+    right: -9px;
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--ld-success);
+    color: #fff;
+    box-shadow: 0 0 0 2px #fff, 0 4px 10px rgba(18, 183, 106, .45);
+    animation: ld-pop .5s var(--ld-spring);
+    z-index: 2;
+}
+.path-mod-labeldiagram .ld-check svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 3;
+}
+.path-mod-labeldiagram .ld-check.ld-cross {
+    background: var(--ld-danger);
+    box-shadow: 0 0 0 2px #fff, 0 4px 10px rgba(240, 68, 56, .45);
+}
+.path-mod-labeldiagram .ld-correction {
+    font-size: .72rem;
+    color: #b42318;
+    line-height: 1.2;
+    padding: 0 2px;
+}
+.path-mod-labeldiagram .ld-figure {
+    position: relative;
+    justify-self: center;
+    width: min(100%, calc(var(--maxh) * var(--arn, 1.333)));
+    aspect-ratio: var(--ar, 4 / 3);
+}
+.path-mod-labeldiagram .ld-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, .12);
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+    background: var(--ld-surface-2);
+}
+.path-mod-labeldiagram .ld-lines {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    overflow: visible;
+}
+.path-mod-labeldiagram .ld-line {
+    fill: none;
+    stroke: #b8c2d3;
+    stroke-width: 1.75;
+    stroke-dasharray: 4 5;
+    transition: stroke .3s, stroke-width .3s, opacity .3s;
+    opacity: .9;
+}
+.path-mod-labeldiagram .ld-line.is-filled {
+    stroke: var(--line-c, #b8c2d3);
+    stroke-dasharray: none;
+    stroke-width: 2.5;
+    opacity: 1;
+    filter: drop-shadow(0 1px 1.5px rgba(15, 23, 42, .25));
+}
+.path-mod-labeldiagram .ld-line.is-over {
+    stroke: var(--c, var(--ld-primary));
+    stroke-width: 3;
+    stroke-dasharray: 7 5;
+    opacity: 1;
+    animation: ld-flow .6s linear infinite;
+}
+.path-mod-labeldiagram .ld-line-end {
+    fill: #b8c2d3;
+    stroke: #fff;
+    stroke-width: 1.5;
+}
+.path-mod-labeldiagram .ld-pin {
+    position: absolute;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: var(--pin);
+    height: var(--pin);
+    padding: 0;
+    border-radius: 50%;
+    border: 0;
+    background: #fff;
+    color: #0f172a;
+    font-weight: 800;
+    font-size: calc(var(--pin) * .46);
+    line-height: 1;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 2px rgba(15, 23, 42, .78), 0 3px 10px rgba(0, 0, 0, .45);
+    transition: transform .3s var(--ld-spring), box-shadow .25s;
+}
+.path-mod-labeldiagram .ld-pin::after {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+}
+.path-mod-labeldiagram .ld-pin.is-filled {
+    box-shadow: 0 0 0 3px var(--c, #0f172a), 0 3px 10px rgba(0, 0, 0, .45);
+}
+.path-mod-labeldiagram .ld-board.is-dragging .ld-pin:not(.is-correct):not(.is-filled):not(.is-over):not(.is-focus),
+.path-mod-labeldiagram .ld-board.is-targeting .ld-pin:not(.is-correct):not(.is-over):not(.is-focus) {
+    animation: ld-ring 1.4s ease-out infinite;
+}
+.path-mod-labeldiagram .ld-pin.is-over,
+.path-mod-labeldiagram .ld-pin.is-focus {
+    transform: translate(-50%, -50%) scale(1.4);
+    box-shadow: 0 0 0 3px var(--ld-primary), 0 0 0 9px rgba(99, 102, 241, .28), 0 6px 18px rgba(0, 0, 0, .4);
+    animation: none;
+}
+.path-mod-labeldiagram .ld-pin.is-correct {
+    box-shadow: 0 0 0 3px var(--ld-success), 0 3px 10px rgba(0, 0, 0, .45);
+}
+.path-mod-labeldiagram .ld-pin.is-incorrect {
+    box-shadow: 0 0 0 3px var(--ld-danger), 0 3px 10px rgba(0, 0, 0, .45);
+}
+.path-mod-labeldiagram .ld-pin.is-wrong {
+    box-shadow: 0 0 0 3px var(--ld-danger), 0 0 0 9px rgba(240, 68, 56, .25);
+    animation: ld-pinshake .45s ease;
+}
+.path-mod-labeldiagram .ld-pin.ld-hinted {
+    box-shadow: 0 0 0 3px var(--ld-warning), 0 0 0 10px rgba(247, 144, 9, .3);
+    animation: ld-pinhint .6s ease-in-out 3;
+}
+.path-mod-labeldiagram .ld-board.is-complete {
+    box-shadow: 0 0 0 3px rgba(18, 183, 106, .25), var(--ld-shadow-md);
+    transition: box-shadow .6s;
+}
+.path-mod-labeldiagram .ld-chip {
+    --c: #6366f1;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 6px 14px;
+    border: 0;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 700;
+    font-size: .92rem;
+    line-height: 1.15;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .18);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--c-bg, var(--c)) 90%, #fff), var(--c-bg, var(--c)) 70%);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, .35) inset,
+        0 -2px 0 rgba(0, 0, 0, .14) inset,
+        0 6px 14px -6px var(--c);
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    transition: transform .22s var(--ld-spring), box-shadow .22s, opacity .2s, filter .2s;
+    word-break: break-word;
+    hyphens: auto;
+}
+.path-mod-labeldiagram .ld-chip:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, .35) inset,
+        0 -2px 0 rgba(0, 0, 0, .14) inset,
+        0 12px 20px -8px var(--c);
+}
+.path-mod-labeldiagram .ld-chip.is-selected {
+    outline: 3px solid var(--ld-text);
+    outline-offset: 3px;
+    transform: translateY(-3px) scale(1.04);
+    animation: ld-bob 1.2s ease-in-out infinite;
+}
+.path-mod-labeldiagram .ld-chip.is-lifted {
+    opacity: .22;
+    transform: scale(.95);
+    filter: saturate(.3);
+}
+.path-mod-labeldiagram .ld-chip.ld-hinted {
+    animation: ld-hint .6s ease-in-out 3;
+    outline: 3px solid var(--ld-warning);
+    outline-offset: 2px;
+}
+.path-mod-labeldiagram .ld-chip.is-locked,
+.path-mod-labeldiagram .ld-chip:disabled,
+.path-mod-labeldiagram .ld-chip-static {
+    cursor: default;
+    opacity: 1;
+}
+.path-mod-labeldiagram .ld-slot-body .ld-chip {
+    width: 100%;
+    min-height: calc(var(--slot-h) - 6px);
+    padding: 3px 8px;
+    font-size: var(--chip-fs);
+    border-radius: 8px;
+}
+.path-mod-labeldiagram .ld-chip.ld-ghost {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10000;
+    margin: 0;
+    pointer-events: none;
+    cursor: grabbing;
+    will-change: transform;
+    transition: none;
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, .35) inset,
+        0 22px 40px -10px rgba(15, 23, 42, .5),
+        0 8px 16px -8px var(--c);
+}
+.path-mod-labeldiagram.ld-noselect,
+.path-mod-labeldiagram.ld-noselect * {
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: grabbing;
+}
+.path-mod-labeldiagram .ld-tray {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 12px;
+    padding: 14px;
+    min-height: 72px;
+    box-sizing: border-box;
+    border-radius: 18px;
+    background: var(--ld-surface);
+    border: 1px solid var(--ld-border);
+    box-shadow: var(--ld-shadow-sm);
+    transition: background-color .25s, border-color .25s, min-height .3s var(--ld-ease), padding .3s;
+}
+.path-mod-labeldiagram .ld-tray.is-dragging {
+    border: 1px dashed var(--ld-border-strong);
+}
+.path-mod-labeldiagram .ld-tray.is-over {
+    background: var(--ld-primary-soft);
+    border-color: var(--ld-primary-2);
+}
+.path-mod-labeldiagram .ld-tray.is-empty {
+    min-height: 16px;
+    padding: 6px;
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+}
+.path-mod-labeldiagram .ld-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.path-mod-labeldiagram .ld-actions-left,
+.path-mod-labeldiagram .ld-actions-right {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.path-mod-labeldiagram .ld-actions-right {
+    margin-left: auto;
+}
+.path-mod-labeldiagram .ld-card {
+    --c: #6366f1;
+    position: absolute;
+    z-index: 40;
+    box-sizing: border-box;
+    max-height: 70%;
+    overflow: auto;
+    padding: 18px 44px 18px 24px;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: var(--ld-shadow-lg), 0 0 0 1px rgba(15, 23, 42, .06);
+    opacity: 0;
+    transform: scale(.9) translateY(8px);
+    transition: opacity .28s var(--ld-ease), transform .42s var(--ld-spring);
+    outline: none;
+}
+.path-mod-labeldiagram .ld-card.is-open {
+    opacity: 1;
+    transform: none;
+}
+.path-mod-labeldiagram .ld-card.is-closing {
+    opacity: 0;
+    transform: scale(.96) translateY(6px);
+    transition-duration: .2s;
+}
+.path-mod-labeldiagram .ld-card.is-sheet {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    max-height: 75%;
+    transform: translateY(24px);
+}
+.path-mod-labeldiagram .ld-card.is-sheet.is-open {
+    transform: none;
+}
+.path-mod-labeldiagram .ld-card-accent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--c) 70%, #fff), var(--c));
+}
+.path-mod-labeldiagram .ld-card-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+.path-mod-labeldiagram .ld-card-num {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+    background: var(--c-bg, var(--c));
+    color: #fff;
+    font-weight: 800;
+    box-shadow: 0 6px 14px -6px var(--c);
+}
+.path-mod-labeldiagram .ld-card-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ld-muted);
+}
+.path-mod-labeldiagram .ld-card-eyebrow svg {
+    width: 13px;
+    height: 13px;
+}
+.path-mod-labeldiagram .ld-card-title {
+    margin: 2px 0 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--ld-text);
+}
+.path-mod-labeldiagram .ld-card-body {
+    font-size: .95rem;
+    line-height: 1.6;
+    color: var(--ld-text-2);
+}
+.path-mod-labeldiagram .ld-card-body p {
+    margin: 0 0 .6em;
+}
+.path-mod-labeldiagram .ld-card-body p:last-child,
+.path-mod-labeldiagram .ld-card-body ul:last-child,
+.path-mod-labeldiagram .ld-card-body ol:last-child {
+    margin-bottom: 0;
+}
+.path-mod-labeldiagram .ld-card-body ul,
+.path-mod-labeldiagram .ld-card-body ol {
+    margin: 0 0 .6em;
+    padding-left: 1.2em;
+}
+.path-mod-labeldiagram .ld-card-body li {
+    margin-bottom: .25em;
+}
+.path-mod-labeldiagram .ld-card-body li::marker {
+    color: var(--c);
+}
+.path-mod-labeldiagram .ld-card-body strong {
+    color: var(--ld-text);
+}
+.path-mod-labeldiagram .ld-card-body h1,
+.path-mod-labeldiagram .ld-card-body h2,
+.path-mod-labeldiagram .ld-card-body h3,
+.path-mod-labeldiagram .ld-card-body h4 {
+    font-size: 1rem;
+    font-weight: 800;
+    margin: .6em 0 .3em;
+}
+.path-mod-labeldiagram .ld-card-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    box-shadow: none;
+}
+.path-mod-labeldiagram .ld-card-close svg {
+    width: 16px;
+    height: 16px;
+}
+.path-mod-labeldiagram .ld-particle {
+    position: absolute;
+    z-index: 30;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+.path-mod-labeldiagram .ld-confetti {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 60;
+    pointer-events: none;
+}
+.path-mod-labeldiagram .ld-banner {
+    position: absolute;
+    top: 44px;
+    left: 50%;
+    z-index: 50;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    color: #fff;
+    font-weight: 800;
+    background: linear-gradient(180deg, #32d583, var(--ld-success));
+    box-shadow: 0 12px 28px -10px rgba(18, 183, 106, .7);
+    transform: translateX(-50%);
+    animation: ld-drop .6s var(--ld-spring);
+    transition: opacity .5s, transform .5s var(--ld-ease);
+}
+.path-mod-labeldiagram .ld-banner.is-out {
+    opacity: 0;
+    transform: translate(-50%, -16px);
+}
+.path-mod-labeldiagram .ld-banner svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+}
+.path-mod-labeldiagram .ld-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 70;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+    border-radius: inherit;
+    background: rgba(15, 23, 42, .35);
+    backdrop-filter: blur(3px);
+    animation: ld-fade .2s ease;
+}
+.path-mod-labeldiagram .ld-dialog {
+    max-width: 420px;
+    padding: 22px;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: var(--ld-shadow-lg);
+    animation: ld-rise .35s var(--ld-spring);
+}
+.path-mod-labeldiagram .ld-dialog p {
+    margin: 0 0 16px;
+    font-weight: 600;
+}
+.path-mod-labeldiagram .ld-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+.path-mod-labeldiagram .ld-summary-shell {
+    align-items: center;
+    padding: clamp(18px, 4vw, 40px);
+}
+.path-mod-labeldiagram .ld-summary {
+    width: 100%;
+    max-width: 560px;
+    text-align: center;
+    padding: 32px clamp(16px, 4vw, 36px);
+    border-radius: 24px;
+    background: var(--ld-surface);
+    border: 1px solid var(--ld-border);
+    box-shadow: var(--ld-shadow-lg);
+    animation: ld-rise .6s var(--ld-spring);
+}
+.path-mod-labeldiagram .ld-summary-ring {
+    position: relative;
+    width: 168px;
+    height: 168px;
+    margin: 0 auto 12px;
+}
+.path-mod-labeldiagram .ld-summary-ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+.path-mod-labeldiagram .ld-ring-bg {
+    stroke: #eef1f6;
+    stroke-width: 12;
+}
+.path-mod-labeldiagram .ld-ring-fg {
+    stroke-width: 12;
+    stroke-linecap: round;
+}
+.path-mod-labeldiagram .ld-ring-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    padding-top: 58px;
+    font-variant-numeric: tabular-nums;
+}
+.path-mod-labeldiagram .ld-ring-label strong {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1;
+}
+.path-mod-labeldiagram .ld-ring-label span {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--ld-muted);
+}
+.path-mod-labeldiagram .ld-summary-title {
+    margin: 4px 0;
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+.path-mod-labeldiagram .ld-summary-sub {
+    margin: 0 0 18px;
+    color: var(--ld-muted);
+    font-weight: 600;
+}
+.path-mod-labeldiagram .ld-summary-stats {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.path-mod-labeldiagram .ld-sstat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 14px;
+    background: var(--ld-surface-2);
+    border: 1px solid var(--ld-border);
+    color: var(--ld-muted);
+    font-weight: 600;
+}
+.path-mod-labeldiagram .ld-sstat svg {
+    width: 18px;
+    height: 18px;
+    color: var(--ld-primary-2);
+}
+.path-mod-labeldiagram .ld-sstat strong {
+    color: var(--ld-text);
+    font-variant-numeric: tabular-nums;
+}
+.path-mod-labeldiagram .ld-summary-actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.path-mod-labeldiagram .ld-leaderboard {
+    text-align: left;
+    margin: 0 0 20px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: var(--ld-surface-2);
+    border: 1px solid var(--ld-border);
+}
+.path-mod-labeldiagram .ld-leaderboard h4 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 8px;
+    font-size: 1rem;
+    font-weight: 800;
+}
+.path-mod-labeldiagram .ld-leaderboard h4 svg {
+    width: 18px;
+    height: 18px;
+    color: var(--ld-warning);
+}
+.path-mod-labeldiagram .ld-leaderboard ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.path-mod-labeldiagram .ld-leaderboard li {
+    display: grid;
+    grid-template-columns: 28px 1fr auto auto;
+    gap: 10px;
+    align-items: center;
+    padding: 7px 8px;
+    border-radius: 10px;
+    font-variant-numeric: tabular-nums;
+}
+.path-mod-labeldiagram .ld-leaderboard li.is-me {
+    background: var(--ld-primary-soft);
+    font-weight: 700;
+}
+.path-mod-labeldiagram .ld-lb-rank {
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid var(--ld-border);
+    font-size: .75rem;
+    font-weight: 800;
+}
+.path-mod-labeldiagram .ld-leaderboard li:nth-child(1) .ld-lb-rank {
+    background: #fef0c7;
+    border-color: #fec84b;
+}
+.path-mod-labeldiagram .ld-lb-time {
+    color: var(--ld-muted);
+    font-size: .85rem;
+}
+.path-mod-labeldiagram .ld-editor {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 380px;
+    gap: 20px;
+    align-items: start;
+}
+.path-mod-labeldiagram .ld-ed-main,
+.path-mod-labeldiagram .ld-ed-side {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.path-mod-labeldiagram .ld-ed-side {
+    position: sticky;
+    top: 70px;
+}
+.path-mod-labeldiagram .ld-panel {
+    padding: 16px;
+    border-radius: 18px;
+    background: var(--ld-surface);
+    border: 1px solid var(--ld-border);
+    box-shadow: var(--ld-shadow-sm);
+}
+.path-mod-labeldiagram .ld-panel h4 {
+    margin: 0 0 10px;
+    font-size: .95rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.path-mod-labeldiagram .ld-panel h4 svg {
+    width: 18px;
+    height: 18px;
+    color: var(--ld-primary);
+}
+.path-mod-labeldiagram .ld-ed-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.path-mod-labeldiagram .ld-ed-toolbar .ld-grow {
+    flex: 1;
+}
+.path-mod-labeldiagram .ld-ed-titleinput {
+    flex: 1;
+    min-width: 200px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--ld-border);
+    background: var(--ld-surface);
+}
+.path-mod-labeldiagram .ld-input,
+.path-mod-labeldiagram .ld-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--ld-border);
+    background: var(--ld-surface);
+    font: inherit;
+    color: var(--ld-text);
+    transition: border-color .2s, box-shadow .2s;
+}
+.path-mod-labeldiagram .ld-input:focus,
+.path-mod-labeldiagram .ld-textarea:focus,
+.path-mod-labeldiagram .ld-ed-titleinput:focus {
+    outline: none;
+    border-color: var(--ld-primary-2);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, .15);
+}
+.path-mod-labeldiagram .ld-textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.5;
+}
+.path-mod-labeldiagram .ld-ed-canvas {
+    position: relative;
+    padding: 14px;
+    border-radius: 20px;
+    background: var(--ld-surface);
+    border: 1px solid var(--ld-border);
+    box-shadow: var(--ld-shadow-sm);
+}
+.path-mod-labeldiagram .ld-ed-figure {
+    position: relative;
+    margin: 0 auto;
+    width: min(100%, calc(70vh * var(--arn, 1.333)));
+    aspect-ratio: var(--ar, 4 / 3);
+    cursor: crosshair;
+    touch-action: none;
+}
+.path-mod-labeldiagram .ld-ed-figure .ld-image {
+    pointer-events: none;
+}
+.path-mod-labeldiagram .ld-ed-figure .ld-pin {
+    cursor: grab;
+    touch-action: none;
+}
+.path-mod-labeldiagram .ld-ed-figure .ld-pin.is-sel {
+    transform: translate(-50%, -50%) scale(1.3);
+    box-shadow: 0 0 0 3px var(--c), 0 0 0 9px color-mix(in srgb, var(--c) 30%, transparent), 0 6px 18px rgba(0, 0, 0, .4);
+}
+.path-mod-labeldiagram .ld-ed-figure .ld-pin.is-new {
+    animation: ld-pop .45s var(--ld-spring);
+}
+.path-mod-labeldiagram .ld-ed-figure .ld-pin-tag {
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 6px);
+    transform: translateX(-50%);
+    white-space: nowrap;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: .7rem;
+    font-weight: 700;
+    color: #fff;
+    background: var(--c-bg, var(--c));
+    box-shadow: 0 4px 10px -4px rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+.path-mod-labeldiagram .ld-ed-figure.is-placing {
+    cursor: copy;
+}
+.path-mod-labeldiagram .ld-ed-figure.is-placing .ld-pin {
+    pointer-events: none;
+    opacity: .75;
+}
+.path-mod-labeldiagram .ld-ed-cursor {
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 2px dashed var(--ld-primary);
+    background: rgba(99, 102, 241, .15);
+    transform: translate(-50%, -50%);
+    display: none;
+}
+.path-mod-labeldiagram .ld-ed-figure.is-placing .ld-ed-cursor {
+    display: block;
+}
+.path-mod-labeldiagram .ld-queue-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    border-radius: 14px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--ld-primary-2), var(--ld-primary));
+    box-shadow: 0 10px 24px -12px rgba(79, 70, 229, .8);
+    animation: ld-rise .35s var(--ld-spring);
+}
+.path-mod-labeldiagram .ld-queue-banner .ld-qlabel {
+    flex: 1;
+    min-width: 180px;
+}
+.path-mod-labeldiagram .ld-queue-banner .ld-qlabel strong {
+    display: block;
+    font-size: 1.1rem;
+}
+.path-mod-labeldiagram .ld-queue-banner .ld-qlabel span {
+    opacity: .85;
+    font-size: .85rem;
+}
+.path-mod-labeldiagram .ld-queue-banner .ld-btn-ghost {
+    background: rgba(255, 255, 255, .15);
+    color: #fff;
+    border-color: rgba(255, 255, 255, .3);
+    box-shadow: none;
+}
+.path-mod-labeldiagram .ld-labellist {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 58vh;
+    overflow: auto;
+    padding: 2px;
+}
+.path-mod-labeldiagram .ld-lrow {
+    border-radius: 14px;
+    border: 1px solid var(--ld-border);
+    background: var(--ld-surface);
+    transition: box-shadow .2s, border-color .2s;
+}
+.path-mod-labeldiagram .ld-lrow.is-sel {
+    border-color: var(--ld-primary-2);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, .15);
+}
+.path-mod-labeldiagram .ld-lrow-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+}
+.path-mod-labeldiagram .ld-lrow-num {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #fff;
+    font-weight: 800;
+    font-size: .75rem;
+    box-shadow: 0 0 0 2px var(--c);
+}
+.path-mod-labeldiagram .ld-lrow-num.is-unplaced {
+    box-shadow: 0 0 0 2px var(--ld-border-strong);
+    color: var(--ld-muted);
+}
+.path-mod-labeldiagram .ld-lrow .ld-input {
+    flex: 1;
+    padding: 6px 8px;
+}
+.path-mod-labeldiagram .ld-swatch {
+    flex: none;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border-radius: 8px;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px var(--ld-border);
+    background: var(--c);
+    cursor: pointer;
+}
+.path-mod-labeldiagram .ld-lrow-body {
+    padding: 0 10px 10px;
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+}
+.path-mod-labeldiagram .ld-lrow.is-sel .ld-lrow-body {
+    display: flex;
+}
+.path-mod-labeldiagram .ld-palette {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.path-mod-labeldiagram .ld-palette button {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border-radius: 7px;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px var(--ld-border);
+    cursor: pointer;
+}
+.path-mod-labeldiagram .ld-palette button.is-on {
+    box-shadow: 0 0 0 2px var(--ld-text);
+}
+.path-mod-labeldiagram .ld-mdbar {
+    display: flex;
+    gap: 4px;
+}
+.path-mod-labeldiagram .ld-mdbar {
+    flex-wrap: wrap;
+}
+/* Some themes restyle every button inside forms; these editor buttons must stay visible. */
+/* stylelint-disable declaration-no-important */
+.path-mod-labeldiagram .ld-mdbar .ld-mdbtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 30px;
+    padding: 0 10px;
+    border-radius: 8px;
+    border: 1px solid var(--ld-border-strong) !important;
+    background: #fff !important;
+    color: var(--ld-text-2) !important;
+    font-size: .8rem !important;
+    font-weight: 600;
+    line-height: 1 !important;
+    text-indent: 0 !important;
+    box-shadow: var(--ld-shadow-sm);
+    cursor: pointer;
+    transition: border-color .15s, color .15s;
+}
+
+.path-mod-labeldiagram .ld-mdbar .ld-mdbtn:hover {
+    border-color: var(--ld-primary-2) !important;
+    color: var(--ld-primary) !important;
+}
+
+.path-mod-labeldiagram .ld-mdbtn-icon {
+    display: inline-grid;
+    place-items: center;
+    min-width: 16px;
+    font-size: .95rem;
+    color: var(--ld-text) !important;
+}
+/* stylelint-enable declaration-no-important */
+.path-mod-labeldiagram .ld-mini {
+    font-size: .8rem;
+    color: var(--ld-muted);
+}
+.path-mod-labeldiagram .ld-check-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .88rem;
+}
+.path-mod-labeldiagram .ld-preview-card {
+    position: relative;
+    padding: 14px 16px 14px 20px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: var(--ld-shadow-md), 0 0 0 1px rgba(15, 23, 42, .05);
+    overflow: hidden;
+}
+.path-mod-labeldiagram .ld-preview-card .ld-card-accent {
+    width: 5px;
+}
+.path-mod-labeldiagram .ld-savestate {
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--ld-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.path-mod-labeldiagram .ld-savestate.is-dirty {
+    color: #b54708;
+}
+.path-mod-labeldiagram .ld-savestate.is-saved {
+    color: var(--ld-success-text);
+}
+.path-mod-labeldiagram .ld-counter-pill {
+    font-size: .78rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: var(--ld-surface-2);
+    border: 1px solid var(--ld-border);
+    color: var(--ld-muted);
+}
+.path-mod-labeldiagram .ld-counter-pill.is-full {
+    color: #b54708;
+    background: var(--ld-warning-soft);
+    border-color: #fedf89;
+}
+.path-mod-labeldiagram .ld-slides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+    margin: 18px 0 26px;
+}
+.path-mod-labeldiagram .ld-slidecard {
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--ld-surface);
+    border: 1px solid var(--ld-border);
+    box-shadow: var(--ld-shadow-sm);
+    transition: transform .25s var(--ld-ease), box-shadow .25s;
+}
+.path-mod-labeldiagram .ld-slidecard:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--ld-shadow-lg);
+}
+.path-mod-labeldiagram .ld-slidecard-thumb {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: var(--ld-surface-2);
+    display: block;
+}
+.path-mod-labeldiagram .ld-slidecard-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.path-mod-labeldiagram .ld-slidecard-no {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: .75rem;
+    font-weight: 800;
+    color: #fff;
+    background: rgba(15, 23, 42, .7);
+    backdrop-filter: blur(4px);
+}
+.path-mod-labeldiagram .ld-slidecard-body {
+    padding: 12px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.path-mod-labeldiagram .ld-slidecard-title {
+    font-weight: 800;
+    margin: 0;
+    font-size: 1rem;
+}
+.path-mod-labeldiagram .ld-slidecard-meta {
+    font-size: .82rem;
+    color: var(--ld-muted);
+    font-weight: 600;
+}
+.path-mod-labeldiagram .ld-slidecard-meta.is-warn {
+    color: #b54708;
+}
+.path-mod-labeldiagram .ld-slidecard-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+.path-mod-labeldiagram .ld-slidecard-actions .ld-iconbtn {
+    width: 36px;
+    height: 36px;
+}
+.path-mod-labeldiagram .ld-slidecard-actions .ld-iconbtn svg {
+    width: 17px;
+    height: 17px;
+}
+.path-mod-labeldiagram .ld-slidecard-actions .ld-btn {
+    flex: 1;
+}
+.path-mod-labeldiagram .ld-report .ld-kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 14px;
+    margin: 12px 0 22px;
+}
+.path-mod-labeldiagram .ld-kpi {
+    padding: 16px 18px;
+    border-radius: 18px;
+    background: var(--ld-surface);
+    border: 1px solid var(--ld-border);
+    box-shadow: var(--ld-shadow-sm);
+}
+.path-mod-labeldiagram .ld-kpi span {
+    display: block;
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--ld-muted);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+.path-mod-labeldiagram .ld-kpi strong {
+    font-size: 1.8rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+.path-mod-labeldiagram .ld-report h3 {
+    font-weight: 800;
+    font-size: 1.15rem;
+    margin: 26px 0 6px;
+}
+.path-mod-labeldiagram .ld-report .ld-help {
+    color: var(--ld-muted);
+    margin-bottom: 12px;
+}
+.path-mod-labeldiagram .ld-report table.ld-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--ld-surface);
+    border: 1px solid var(--ld-border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--ld-shadow-sm);
+}
+.path-mod-labeldiagram .ld-table th {
+    background: var(--ld-surface-2);
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--ld-muted);
+    font-weight: 800;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--ld-border);
+    text-align: left;
+}
+.path-mod-labeldiagram .ld-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--ld-border);
+    vertical-align: middle;
+    font-variant-numeric: tabular-nums;
+}
+.path-mod-labeldiagram .ld-table tr:last-child td {
+    border-bottom: 0;
+}
+.path-mod-labeldiagram .ld-bar {
+    position: relative;
+    height: 10px;
+    min-width: 120px;
+    border-radius: 999px;
+    background: #eef1f6;
+    overflow: hidden;
+}
+.path-mod-labeldiagram .ld-bar span {
+    position: absolute;
+    inset: 0 auto 0 0;
+    border-radius: 999px;
+    background: var(--ld-success);
+}
+.path-mod-labeldiagram .ld-bar.is-mid span {
+    background: var(--ld-warning);
+}
+.path-mod-labeldiagram .ld-bar.is-bad span {
+    background: var(--ld-danger);
+}
+.path-mod-labeldiagram .ld-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.path-mod-labeldiagram .ld-bar-row b {
+    min-width: 46px;
+    text-align: right;
+}
+.path-mod-labeldiagram .ld-dotcolor {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+.path-mod-labeldiagram .ld-pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: .75rem;
+    font-weight: 700;
+    background: var(--ld-surface-2);
+    border: 1px solid var(--ld-border);
+}
+.path-mod-labeldiagram .ld-pill.is-test {
+    color: #b54708;
+    background: var(--ld-warning-soft);
+    border-color: #fedf89;
+}
+.path-mod-labeldiagram .ld-pill.is-practice {
+    color: var(--ld-primary);
+    background: var(--ld-primary-soft);
+    border-color: #c7d2fe;
+}
+.path-mod-labeldiagram .ld-tabs {
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 14px;
+    background: var(--ld-surface);
+    border: 1px solid var(--ld-border);
+    box-shadow: var(--ld-shadow-sm);
+    margin-bottom: 8px;
+}
+.path-mod-labeldiagram .ld-tabs a {
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    color: var(--ld-muted);
+    text-decoration: none;
+}
+.path-mod-labeldiagram .ld-tabs a.is-on {
+    background: var(--ld-primary-soft);
+    color: var(--ld-primary);
+}
+.path-mod-labeldiagram .ld-report-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 12px 0;
+}
+
+@media (max-width: 991px) {
+    .path-mod-labeldiagram .ld-editor {
+        grid-template-columns: 1fr;
+    }
+    .path-mod-labeldiagram .ld-ed-side {
+        position: static;
+    }
+}
+
+@media (max-width: 700px) {
+    .path-mod-labeldiagram .ld-shell {
+        padding: 10px;
+        border-radius: 18px;
+        gap: 10px;
+        --maxh: 52vh;
+    }
+    .path-mod-labeldiagram .ld-board {
+        --rail: minmax(96px, 36%);
+        grid-template-columns: minmax(88px, 32%) minmax(0, 1fr);
+        column-gap: 14px;
+        padding: 8px;
+        border-radius: 16px;
+        --slot-h: 34px;
+        --chip-fs: .74rem;
+        --pin: 22px;
+    }
+    .path-mod-labeldiagram .ld-board.ld-compact,
+    .path-mod-labeldiagram .ld-board.ld-n9,
+    .path-mod-labeldiagram .ld-board.ld-n10 {
+        --slot-h: 28px;
+        --chip-fs: .66rem;
+        --pin: 19px;
+    }
+    .path-mod-labeldiagram .ld-slot-num {
+        width: 18px;
+        height: 18px;
+        font-size: .62rem;
+    }
+    .path-mod-labeldiagram .ld-slot-zone {
+        gap: 4px;
+        padding: 2px 3px;
+        border-radius: 9px;
+    }
+    .path-mod-labeldiagram .ld-slot-body .ld-chip {
+        padding: 2px 4px;
+        border-radius: 6px;
+    }
+    .path-mod-labeldiagram .ld-chip {
+        min-height: 40px;
+        padding: 6px 12px;
+        font-size: .85rem;
+    }
+    .path-mod-labeldiagram .ld-tray {
+        gap: 8px;
+        padding: 10px;
+    }
+    .path-mod-labeldiagram .ld-score-label,
+    .path-mod-labeldiagram .ld-counter-hide-sm {
+        display: none;
+    }
+    .path-mod-labeldiagram .ld-timer,
+    .path-mod-labeldiagram .ld-score {
+        height: 36px;
+        padding: 0 8px;
+        font-size: .85rem;
+    }
+    .path-mod-labeldiagram .ld-iconbtn {
+        width: 36px;
+        height: 36px;
+    }
+    .path-mod-labeldiagram .ld-modetag {
+        display: none;
+    }
+    .path-mod-labeldiagram .ld-actions .ld-btn {
+        min-height: 42px;
+        padding: 0 12px;
+    }
+    .path-mod-labeldiagram .ld-card {
+        padding: 16px 40px 16px 20px;
+    }
+    .path-mod-labeldiagram .ld-banner {
+        top: 30px;
+        font-size: .85rem;
+    }
+    .path-mod-labeldiagram .ld-leaderboard li {
+        grid-template-columns: 24px 1fr auto;
+    }
+    .path-mod-labeldiagram .ld-lb-time {
+        display: none;
+    }
+}
+
+@media (max-width: 420px) {
+    .path-mod-labeldiagram .ld-board {
+        grid-template-columns: minmax(84px, 38%) minmax(0, 1fr);
+        column-gap: 12px;
+    }
+    .path-mod-labeldiagram .ld-actions .ld-btn span {
+        font-size: .85rem;
+    }
+    .path-mod-labeldiagram .ld-timer svg,
+    .path-mod-labeldiagram .ld-score svg {
+        display: none;
+    }
+}
+/* Near-zero (not zero) durations keep animationend events firing; !important beats inline animation styles. */
+/* stylelint-disable declaration-no-important, time-min-milliseconds */
+@media (prefers-reduced-motion: reduce) {
+    .path-mod-labeldiagram .ld-app *,
+    .path-mod-labeldiagram .ld-editor * {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+/* stylelint-enable declaration-no-important, time-min-milliseconds */
+@keyframes ld-rise {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(.985);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes ld-fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes ld-pop {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes ld-drop {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -24px) scale(.9);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes ld-shake {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    20% {
+        transform: translateX(-7px);
+    }
+    40% {
+        transform: translateX(6px);
+    }
+    60% {
+        transform: translateX(-4px);
+    }
+    80% {
+        transform: translateX(3px);
+    }
+}
+
+@keyframes ld-pinshake {
+    0%,
+    100% {
+        transform: translate(-50%, -50%);
+    }
+    25% {
+        transform: translate(calc(-50% - 5px), -50%);
+    }
+    75% {
+        transform: translate(calc(-50% + 5px), -50%);
+    }
+}
+
+@keyframes ld-breathe {
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+    }
+    50% {
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, .14);
+    }
+}
+
+@keyframes ld-ring {
+    0% {
+        box-shadow: 0 0 0 2px rgba(15, 23, 42, .78), 0 0 0 0 rgba(99, 102, 241, .55), 0 3px 10px rgba(0, 0, 0, .45);
+    }
+    100% {
+        box-shadow: 0 0 0 2px rgba(15, 23, 42, .78), 0 0 0 14px rgba(99, 102, 241, 0), 0 3px 10px rgba(0, 0, 0, .45);
+    }
+}
+
+@keyframes ld-flow {
+    to {
+        stroke-dashoffset: -24;
+    }
+}
+
+@keyframes ld-bob {
+    0%,
+    100% {
+        transform: translateY(-3px) scale(1.04);
+    }
+    50% {
+        transform: translateY(-6px) scale(1.04);
+    }
+}
+
+@keyframes ld-hint {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.06);
+    }
+}
+
+@keyframes ld-pinhint {
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.35);
+    }
+}
+
+@keyframes ld-glow {
+    0%,
+    100% {
+        box-shadow: 0 1px 0 rgba(255, 255, 255, .25) inset, 0 6px 16px -6px rgba(79, 70, 229, .65), 0 0 0 0 rgba(99, 102, 241, .45);
+    }
+    50% {
+        box-shadow: 0 1px 0 rgba(255, 255, 255, .25) inset, 0 6px 16px -6px rgba(79, 70, 229, .65), 0 0 0 8px rgba(99, 102, 241, 0);
+    }
+}
+
+@keyframes ld-throb {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+.path-mod-labeldiagram .ld-intro-shell {
+    align-items: center;
+    padding: clamp(14px, 3vw, 36px);
+}
+.path-mod-labeldiagram .ld-intro {
+    width: 100%;
+    max-width: 820px;
+    border-radius: 24px;
+    background: var(--ld-surface);
+    border: 1px solid var(--ld-border);
+    box-shadow: var(--ld-shadow-lg);
+    overflow: hidden;
+    animation: ld-rise .5s var(--ld-spring);
+    --accent: var(--ld-primary);
+    --accent-soft: var(--ld-primary-soft);
+}
+.path-mod-labeldiagram .ld-intro-study {
+    --accent: var(--ld-teal);
+    --accent-text: var(--ld-teal-text);
+    --accent-soft: #e6f7f6;
+}
+.path-mod-labeldiagram .ld-intro-test {
+    --accent: var(--ld-warning);
+    --accent-text: var(--ld-warning-text);
+    --accent-soft: var(--ld-warning-soft);
+}
+.path-mod-labeldiagram .ld-intro-hero {
+    text-align: center;
+    padding: 30px 24px 22px;
+    background: radial-gradient(120% 90% at 50% 0%, var(--accent-soft), #fff 70%);
+    border-bottom: 1px solid var(--ld-border);
+}
+.path-mod-labeldiagram .ld-intro-badge {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 12px;
+    border-radius: 20px;
+    color: #fff;
+    background: var(--accent);
+    box-shadow: 0 14px 28px -12px var(--accent);
+    animation: ld-pop .6s var(--ld-spring);
+}
+.path-mod-labeldiagram .ld-intro-badge svg {
+    width: 32px;
+    height: 32px;
+    stroke-width: 2.4;
+}
+.path-mod-labeldiagram .ld-intro-hero .ld-modetag {
+    display: inline-block;
+    color: var(--accent-text, var(--accent));
+    background: #fff;
+    border: 1px solid var(--ld-border);
+}
+.path-mod-labeldiagram .ld-intro-title {
+    margin: 10px 0 4px;
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    font-weight: 800;
+}
+.path-mod-labeldiagram .ld-intro-sub {
+    margin: 0 auto;
+    max-width: 520px;
+    color: var(--ld-muted);
+    line-height: 1.5;
+}
+.path-mod-labeldiagram .ld-intro-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 0;
+}
+.path-mod-labeldiagram .ld-intro-col {
+    padding: 22px 24px;
+}
+.path-mod-labeldiagram .ld-intro-col + .ld-intro-col {
+    border-left: 1px solid var(--ld-border);
+    background: var(--ld-surface-2);
+}
+.path-mod-labeldiagram .ld-intro-col h4 {
+    margin: 0 0 12px;
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ld-muted);
+}
+.path-mod-labeldiagram .ld-intro-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.path-mod-labeldiagram .ld-intro-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    color: var(--ld-text-2);
+    line-height: 1.35;
+}
+.path-mod-labeldiagram .ld-intro-list li.is-key {
+    padding: 10px 12px;
+    margin: -2px -4px;
+    border-radius: 14px;
+    background: var(--accent-soft);
+    color: var(--ld-text);
+    font-weight: 800;
+}
+.path-mod-labeldiagram .ld-intro-ic {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+    background: #fff;
+    border: 1px solid var(--ld-border);
+    color: var(--accent);
+}
+.path-mod-labeldiagram .ld-intro-ic svg {
+    width: 18px;
+    height: 18px;
+}
+.path-mod-labeldiagram .ld-intro-how p {
+    margin: 12px 0 0;
+    color: var(--ld-text-2);
+    line-height: 1.5;
+}
+.path-mod-labeldiagram .ld-intro-demo {
+    position: relative;
+    height: 90px;
+    border-radius: 14px;
+    background: #fff;
+    border: 1px solid var(--ld-border);
+    overflow: hidden;
+}
+.path-mod-labeldiagram .ld-demo-path {
+    position: absolute;
+    inset: 10px 10px;
+    width: calc(100% - 20px);
+    height: 70px;
+}
+.path-mod-labeldiagram .ld-demo-path path {
+    stroke: #b8c2d3;
+    stroke-width: 2;
+    stroke-dasharray: 4 5;
+}
+.path-mod-labeldiagram .ld-demo-chip {
+    position: absolute;
+    left: 14px;
+    top: 44px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 800;
+    font-size: .8rem;
+    background: var(--accent);
+    box-shadow: 0 8px 16px -8px var(--accent);
+    animation: ld-demo-chip 2.8s var(--ld-ease) infinite;
+}
+.path-mod-labeldiagram .ld-demo-pin {
+    position: absolute;
+    right: 18%;
+    top: 14px;
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #fff;
+    font-weight: 800;
+    font-size: .75rem;
+    box-shadow: 0 0 0 2px rgba(15, 23, 42, .78), 0 3px 8px rgba(0, 0, 0, .3);
+    animation: ld-demo-pin 2.8s ease infinite;
+}
+.path-mod-labeldiagram .ld-demo-hand {
+    position: absolute;
+    left: 30px;
+    top: 56px;
+    color: var(--ld-text);
+    animation: ld-demo-hand 2.8s var(--ld-ease) infinite;
+}
+.path-mod-labeldiagram .ld-demo-hand svg {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+}
+.path-mod-labeldiagram .ld-intro-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 16px 24px 22px;
+    border-top: 1px solid var(--ld-border);
+}
+.path-mod-labeldiagram .ld-btn-lg {
+    min-height: 50px;
+    padding: 0 28px;
+    font-size: 1.02rem;
+    border-radius: 14px;
+}
+.path-mod-labeldiagram .ld-intro-test .ld-btn-primary {
+    background: linear-gradient(180deg, #fdb022, var(--ld-warning));
+    box-shadow: 0 8px 20px -8px rgba(247, 144, 9, .7);
+}
+.path-mod-labeldiagram .ld-intro-study .ld-btn-primary {
+    background: linear-gradient(180deg, #14b8a6, var(--ld-teal));
+    box-shadow: 0 8px 20px -8px rgba(14, 159, 154, .7);
+}
+.path-mod-labeldiagram .ld-verdict {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    margin-bottom: 6px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: .9rem;
+    animation: ld-pop .5s var(--ld-spring) .9s both;
+}
+.path-mod-labeldiagram .ld-verdict svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 3;
+}
+.path-mod-labeldiagram .ld-verdict.is-pass {
+    color: #067647;
+    background: var(--ld-success-soft);
+    border: 1px solid #abefc6;
+}
+.path-mod-labeldiagram .ld-verdict.is-fail {
+    color: #b42318;
+    background: var(--ld-danger-soft);
+    border: 1px solid #fecdca;
+}
+.path-mod-labeldiagram .ld-summary.is-pass {
+    background: radial-gradient(120% 60% at 50% 0%, #ecfdf3, #fff 60%);
+}
+
+@media (max-width: 700px) {
+    .path-mod-labeldiagram .ld-intro-grid {
+        grid-template-columns: 1fr;
+    }
+    .path-mod-labeldiagram .ld-intro-col + .ld-intro-col {
+        border-left: 0;
+        border-top: 1px solid var(--ld-border);
+    }
+    .path-mod-labeldiagram .ld-intro-actions .ld-btn-lg {
+        flex: 1;
+    }
+}
+
+@keyframes ld-demo-chip {
+    0%,
+    15% {
+        transform: translate(0, 0);
+    }
+    55%,
+    80% {
+        transform: translate(calc(82% + 60px), -32px) scale(.95);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(calc(82% + 60px), -32px);
+        opacity: 0;
+    }
+}
+
+@keyframes ld-demo-hand {
+    0%,
+    15% {
+        transform: translate(0, 0);
+    }
+    55%,
+    80% {
+        transform: translate(calc(82% + 60px), -32px);
+    }
+    100% {
+        transform: translate(calc(82% + 60px), -32px);
+        opacity: 0;
+    }
+}
+
+@keyframes ld-demo-pin {
+    0%,
+    50% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1.35);
+        box-shadow: 0 0 0 3px #4f46e5, 0 0 0 9px rgba(99, 102, 241, .28);
+    }
+    80%,
+    100% {
+        transform: scale(1);
+    }
+}
+.path-mod-labeldiagram .ld-steps {
+    margin: 0 0 14px;
+    padding-left: 1.3em;
+    color: var(--ld-text-2);
+    line-height: 1.6;
+}
+.path-mod-labeldiagram .ld-prompt {
+    margin-bottom: 18px;
+    border-radius: 14px;
+    border: 1px solid var(--ld-border);
+    background: var(--ld-surface-2);
+    overflow: hidden;
+}
+.path-mod-labeldiagram .ld-prompt-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--ld-border);
+}
+.path-mod-labeldiagram .ld-prompt-text {
+    border: 0;
+    border-radius: 0;
+    background: #0f172a;
+    color: #e2e8f0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .8rem;
+    min-height: 240px;
+}
+.path-mod-labeldiagram .ld-copy.is-done {
+    background: linear-gradient(180deg, #32d583, var(--ld-success));
+}
+.path-mod-labeldiagram textarea.ld-json {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .82rem;
+}
+
+@media (max-width: 560px) {
+    .path-mod-labeldiagram .ld-board.ld-compact {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 12px;
+        --pin: 24px;
+        --slot-h: 36px;
+        --chip-fs: .74rem;
+    }
+    .path-mod-labeldiagram .ld-board.ld-compact .ld-figure {
+        order: -1;
+        width: 100%;
+    }
+    .path-mod-labeldiagram .ld-board.ld-compact .ld-rail {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+    }
+    .path-mod-labeldiagram .ld-board.ld-compact .ld-lines {
+        display: none;
+    }
+}
+.path-mod-labeldiagram .ld-tips {
+    margin: 4px 0 16px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: var(--ld-primary-soft);
+    border: 1px solid #c7d2fe;
+    color: var(--ld-text-2);
+    font-size: .88rem;
+}
+.path-mod-labeldiagram .ld-tips-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    color: var(--ld-primary);
+}
+.path-mod-labeldiagram .ld-tips-head svg {
+    width: 18px;
+    height: 18px;
+}
+.path-mod-labeldiagram .ld-tips ul {
+    margin: 0;
+    padding-left: 1.2em;
+    display: grid;
+    gap: 4px;
+    line-height: 1.45;
+}
+.path-mod-labeldiagram .ld-tips strong {
+    color: var(--ld-text);
+}
+.path-mod-labeldiagram .ld-queue-banner .ld-qsteps {
+    flex-basis: 100%;
+    order: 5;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 2px 0 0;
+    padding: 10px 0 0;
+    list-style: none;
+    border-top: 1px solid rgba(255, 255, 255, .25);
+    counter-reset: ldq;
+}
+.path-mod-labeldiagram .ld-qstep {
+    counter-increment: ldq;
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: .82rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, .14);
+    border: 1px solid rgba(255, 255, 255, .28);
+}
+.path-mod-labeldiagram .ld-qstep::before {
+    content: counter(ldq) ".";
+    margin-right: 5px;
+    opacity: .7;
+}
+.path-mod-labeldiagram .ld-qstep.is-done {
+    opacity: .6;
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+}
+.path-mod-labeldiagram .ld-qstep.is-current {
+    background: #fff;
+    color: var(--ld-primary);
+    font-weight: 800;
+    box-shadow: 0 4px 12px -4px rgba(0, 0, 0, .35);
+    animation: ld-pop .35s var(--ld-spring);
+}
+.path-mod-labeldiagram .ld-qstep button {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+.path-mod-labeldiagram .ld-qstep button:hover {
+    text-decoration: underline;
+}
+.path-mod-labeldiagram .ld-aihelper {
+    margin: 0 0 10px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: var(--ld-primary-soft);
+    border: 1px solid #c7d2fe;
+    font-size: .84rem;
+    color: var(--ld-text-2);
+}
+.path-mod-labeldiagram .ld-aihelper-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+    color: var(--ld-primary);
+}
+.path-mod-labeldiagram .ld-aihelper-title svg {
+    width: 16px;
+    height: 16px;
+    flex: none;
+}
+.path-mod-labeldiagram .ld-aihelper-steps {
+    margin: 0 0 10px;
+    padding-left: 1.2em;
+    line-height: 1.45;
+}
+.path-mod-labeldiagram .ld-aihelper .ld-btn.is-done {
+    color: #fff;
+    background: linear-gradient(180deg, #32d583, var(--ld-success));
+    border-color: transparent;
+}
+.path-mod-labeldiagram .ld-tips .ld-prompt {
+    margin: 12px 0 0;
+    background: #fff;
+}
+.path-mod-labeldiagram .ld-tips .ld-prompt-head {
+    align-items: flex-start;
+}
+.path-mod-labeldiagram .ld-tips .ld-prompt-text {
+    min-height: 200px;
+}
+.path-mod-labeldiagram .ld-intro-demo.is-study {
+    display: none;
+}
+.path-mod-labeldiagram .ld-shell {
+    gap: 8px;
+    padding: 12px;
+}
+.path-mod-labeldiagram .ld-shell.is-full {
+    padding: 12px clamp(10px, 2vw, 24px);
+}
+.path-mod-labeldiagram .ld-titlewrap {
+    flex: 0 1 auto;
+    max-width: 38%;
+}
+.path-mod-labeldiagram .ld-hint {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+    font-size: .84rem;
+    font-weight: 500;
+    color: var(--ld-muted);
+    line-height: 1.3;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.path-mod-labeldiagram .ld-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.path-mod-labeldiagram .ld-counter .ld-dots {
+    gap: 4px;
+}
+.path-mod-labeldiagram .ld-counter .ld-dot {
+    width: 6px;
+    height: 6px;
+}
+.path-mod-labeldiagram .ld-counter .ld-dot.is-active {
+    width: 18px;
+}
+.path-mod-labeldiagram .ld-slide {
+    padding: 0 2px 4px;
+}
+.path-mod-labeldiagram .ld-board {
+    padding: 10px;
+    column-gap: clamp(20px, 3.5vw, 56px);
+}
+.path-mod-labeldiagram .ld-tray {
+    margin-top: 8px;
+    padding: 10px;
+    min-height: 60px;
+}
+.path-mod-labeldiagram .ld-shell.ld-wide .ld-slide.has-tray {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(170px, 16%, 230px);
+    gap: 10px;
+    align-items: stretch;
+}
+.path-mod-labeldiagram .ld-shell.ld-wide .ld-slide.has-tray .ld-tray,
+.path-mod-labeldiagram .ld-shell.ld-wide .ld-slide.has-tray .ld-tray.is-empty {
+    margin: 0;
+    padding: 10px;
+    height: 0;
+    min-height: 100%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-y: auto;
+    gap: 8px;
+    border: 1px solid var(--ld-border);
+    background: var(--ld-surface);
+    box-shadow: var(--ld-shadow-sm);
+}
+.path-mod-labeldiagram .ld-shell.ld-wide .ld-slide.has-tray .ld-tray.is-dragging {
+    border-style: dashed;
+}
+.path-mod-labeldiagram .ld-shell.ld-wide .ld-slide.has-tray .ld-tray.is-over {
+    background: var(--ld-primary-soft);
+}
+.path-mod-labeldiagram .ld-shell.ld-wide .ld-slide.has-tray .ld-tray .ld-chip {
+    flex: none;
+    width: 100%;
+    min-height: 38px;
+    font-size: .86rem;
+}
+.path-mod-labeldiagram .ld-shell.ld-wide .ld-slide.has-tray .ld-tray[hidden] {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .path-mod-labeldiagram .ld-topbar {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .path-mod-labeldiagram .ld-titlewrap {
+        flex: 1;
+        max-width: none;
+    }
+    .path-mod-labeldiagram .ld-hint {
+        order: 5;
+        flex-basis: 100%;
+        font-size: .78rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .path-mod-labeldiagram .ld-slidename {
+        -webkit-line-clamp: 1;
+        font-size: .95rem;
+    }
+    .path-mod-labeldiagram .ld-counter {
+        white-space: nowrap;
+    }
+    .path-mod-labeldiagram .ld-counter .ld-dots {
+        display: none;
+    }
+}
+.path-mod-labeldiagram .ld-tray-done {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: auto;
+    color: var(--ld-success);
+    font-weight: 700;
+    font-size: .88rem;
+    text-align: center;
+}
+.path-mod-labeldiagram .ld-tray-done svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 3;
+}
+.path-mod-labeldiagram .ld-shell.ld-wide .ld-tray.is-empty .ld-tray-done {
+    display: flex;
+    flex-direction: column;
+}
+.path-mod-labeldiagram .ld-mode.is-done {
+    --accent: var(--ld-success);
+    --accent-text: var(--ld-success-text);
+    border-color: #abefc6;
+    background: linear-gradient(180deg, #f3fcf6 0%, #fff 55%);
+}
+.path-mod-labeldiagram .ld-mode.is-done::before {
+    background: linear-gradient(90deg, #32d583, var(--ld-success));
+}
+.path-mod-labeldiagram .ld-mode-done {
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    color: #fff;
+    background: linear-gradient(180deg, #32d583, var(--ld-success));
+    box-shadow: 0 0 0 6px #fff, 0 0 0 7px #d1fadf, 0 14px 28px -10px rgba(18, 183, 106, .7);
+    transform: translateX(-50%);
+    animation: ld-done-pop .6s var(--ld-spring) both;
+}
+.path-mod-labeldiagram .ld-mode-done svg {
+    width: 34px;
+    height: 34px;
+    stroke-width: 3;
+    stroke-dasharray: 24;
+    stroke-dashoffset: 24;
+    animation: ld-done-tick .45s var(--ld-ease) .35s forwards;
+}
+.path-mod-labeldiagram .ld-mode.is-done .ld-mode-icon {
+    color: var(--ld-success);
+    background: var(--ld-success-soft);
+}
+.path-mod-labeldiagram .ld-badge.ld-badge-done {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #067647;
+    background: var(--ld-success-soft);
+    border: 1px solid #abefc6;
+}
+.path-mod-labeldiagram .ld-badge-done svg {
+    width: 13px;
+    height: 13px;
+    stroke-width: 3;
+}
+.path-mod-labeldiagram .ld-mode.is-done .ld-mode-start {
+    color: #067647;
+    background: #fff;
+    border: 1px solid #abefc6;
+    box-shadow: var(--ld-shadow-sm);
+}
+.path-mod-labeldiagram .ld-mode.is-done .ld-mode-start:hover:not(:disabled) {
+    color: #fff;
+    background: linear-gradient(180deg, #32d583, var(--ld-success));
+}
+.path-mod-labeldiagram .ld-stat.ld-stat-done {
+    color: #067647;
+    background: var(--ld-success-soft);
+    border-color: #abefc6;
+}
+.path-mod-labeldiagram .ld-stat.ld-stat-done svg {
+    color: var(--ld-success);
+    stroke-width: 3;
+}
+
+@keyframes ld-done-pop {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) scale(.4);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+@keyframes ld-done-tick {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+.path-mod-labeldiagram .ld-mode-bestfor {
+    margin: -2px 0 4px;
+    font-size: .8rem;
+    font-weight: 800;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--accent-text, var(--accent));
+}
+.path-mod-labeldiagram .ld-cmp {
+    list-style: none;
+    margin: 4px 0 2px;
+    padding: 0;
+    display: grid;
+    gap: 2px;
+    flex: 1;
+}
+.path-mod-labeldiagram .ld-cmp li {
+    display: grid;
+    grid-template-columns: 22px minmax(92px, auto) 1fr;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 0;
+    border-bottom: 1px dashed var(--ld-border);
+    font-size: .88rem;
+}
+.path-mod-labeldiagram .ld-cmp li:last-child {
+    border-bottom: 0;
+}
+.path-mod-labeldiagram .ld-cmp-ic {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+}
+.path-mod-labeldiagram .ld-cmp-ic svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 3;
+}
+.path-mod-labeldiagram .ld-cmp li.is-yes .ld-cmp-ic {
+    color: #fff;
+    background: var(--accent);
+}
+.path-mod-labeldiagram .ld-cmp li.is-no .ld-cmp-ic {
+    color: var(--ld-muted);
+    background: #eef1f6;
+}
+.path-mod-labeldiagram .ld-cmp-label {
+    color: var(--ld-muted);
+    font-weight: 600;
+}
+.path-mod-labeldiagram .ld-cmp-text {
+    color: var(--ld-text);
+    font-weight: 700;
+}
+.path-mod-labeldiagram .ld-cmp li.is-no .ld-cmp-text {
+    color: var(--ld-muted);
+    font-weight: 600;
+}
+.path-mod-labeldiagram .ld-mode-extra {
+    color: var(--ld-muted);
+}
+.path-mod-labeldiagram .ld-mode .ld-mode-desc {
+    display: none;
+}
+.path-mod-labeldiagram .ld-mode {
+    --mode-accent: var(--ld-primary);
+}
+.path-mod-labeldiagram .ld-mode-study {
+    --mode-accent: var(--ld-teal);
+    --mode-accent-text: var(--ld-teal-text);
+}
+.path-mod-labeldiagram .ld-mode-test {
+    --mode-accent: var(--ld-warning);
+    --mode-accent-text: var(--ld-warning-text);
+}
+.path-mod-labeldiagram .ld-cmp li {
+    grid-template-columns: 22px 118px minmax(0, 1fr);
+}
+.path-mod-labeldiagram .ld-cmp li.is-yes .ld-cmp-ic {
+    background: var(--mode-accent);
+}
+.path-mod-labeldiagram .ld-mode-bestfor {
+    color: var(--mode-accent-text, var(--mode-accent));
+}
+.path-mod-labeldiagram .ld-board {
+    --rail: clamp(160px, 25%, 270px);
+}
+.path-mod-labeldiagram .ld-rail {
+    gap: 8px;
+}
+.path-mod-labeldiagram .ld-slot-zone {
+    gap: 8px;
+    padding: 4px 6px 4px 5px;
+}
+.path-mod-labeldiagram .ld-slot-num {
+    width: 26px;
+    height: 26px;
+    font-size: .82rem;
+}
+.path-mod-labeldiagram .ld-slot-body .ld-chip {
+    min-height: calc(var(--slot-h) - 10px);
+    padding: 4px 10px;
+    font-size: var(--chip-fs);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: .01em;
+}
+
+@media (max-width: 700px) {
+    .path-mod-labeldiagram .ld-board.ld-compact,
+    .path-mod-labeldiagram .ld-board.ld-n9,
+    .path-mod-labeldiagram .ld-board.ld-n10 {
+        --chip-fs: .8rem;
+        --slot-h: 38px;
+    }
+    .path-mod-labeldiagram .ld-slot-num {
+        width: 22px;
+        height: 22px;
+        font-size: .72rem;
+    }
+}
+.path-mod-labeldiagram .ld-tray {
+    gap: 12px;
+    padding: 14px;
+}
+.path-mod-labeldiagram .ld-tray .ld-chip {
+    min-height: 48px;
+    padding: 10px 18px;
+    font-size: 1rem;
+    border-radius: 12px;
+}
+.path-mod-labeldiagram .ld-shell.ld-wide .ld-slide.has-tray .ld-tray,
+.path-mod-labeldiagram .ld-shell.ld-wide .ld-slide.has-tray .ld-tray.is-empty {
+    gap: 12px;
+    padding: 12px;
+}
+.path-mod-labeldiagram .ld-shell.ld-wide .ld-slide.has-tray .ld-tray .ld-chip {
+    min-height: 48px;
+    padding: 10px 12px;
+    font-size: 1rem;
+}
+.path-mod-labeldiagram .ld-ghost {
+    font-size: 1rem;
+}
+
+@media (max-width: 700px) {
+    .path-mod-labeldiagram .ld-tray {
+        gap: 10px;
+        padding: 10px;
+    }
+    .path-mod-labeldiagram .ld-tray .ld-chip {
+        min-height: 44px;
+        padding: 8px 14px;
+        font-size: .92rem;
+    }
+}
+.path-mod-labeldiagram .ld-rail {
+    gap: var(--rail-gap, 8px);
+}
+.path-mod-labeldiagram .ld-slot-body .ld-chip {
+    min-height: max(22px, calc(var(--slot-h) - 10px));
+}
+.path-mod-labeldiagram .ld-slot-zone {
+    padding: 2px 5px 2px 4px;
+}
+.path-mod-labeldiagram .ld-slot-body .ld-chip {
+    padding: clamp(1px, calc((var(--slot-h) - 32px) / 4), 5px) 10px;
+    line-height: 1.15;
+}
