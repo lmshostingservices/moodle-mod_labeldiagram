@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.5 (2026-09-27)
+
+- JavaScript rebuilt with the exact build tool versions Moodle pins, so the built files match what Moodle's official build produces. No change to how the plugin works.
+
 ## 2.0.4 (2026-09-27)
 
 - Stylesheet: responsive sizes now pass the CSS validator used by Moodle's official build tools on every supported version. Layout and appearance are unchanged.

@@ -25,9 +25,9 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'mod_labeldiagram';
-$plugin->version   = 2026092700;
-$plugin->release   = '2.0.4';
-$plugin->release_prev = '2.0.3';
+$plugin->version   = 2026092701;
+$plugin->release   = '2.0.5';
+$plugin->release_prev = '2.0.4';
 $plugin->requires  = 2024042200; // Moodle 4.4.
 $plugin->supported = [404, 503];
 $plugin->maturity  = MATURITY_STABLE;
